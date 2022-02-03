@@ -12,3 +12,8 @@ pytest
 torch
 torchvision
 torchaudio
+black
+isort
+mypy
+pytest-flake8
+pytest-mypy
