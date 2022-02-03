@@ -7,6 +7,8 @@ catchMinor
 - To do
     - `Basemodel.py` 만들어서 기준 만들기
     - 기존 레포 합치기
+    - git action
+        - test 실행
 
 ## Implementation
 
