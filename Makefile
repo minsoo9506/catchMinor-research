@@ -34,9 +34,11 @@ clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
 
-## Lint using flake8
+#  Lint using
+## flake8: PEP8 based lint
+## mypy: type check
 lint:
-	flake8 src
+	pytest src --flake8 --mypy
 
 #  formatting
 ## black: formatting
