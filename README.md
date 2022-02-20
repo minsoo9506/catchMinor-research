@@ -7,9 +7,8 @@
     - Imbalanced Learning
     - Anomaly Detection, Outlier Analysis
 
-[여기에는 나만 보인다]: #
 [To do]: #
-[`Basemodel.py` 만들어서 기준 만들기]: #
+[기준 만들기]: #
 
 ### Index
 ---
@@ -32,6 +31,12 @@
 - [Resource](#resource)
 
 # Code Implementation
+- ing
+  - BaseAutoEncoder
+- coming soon
+  - VAE
+  - GAN
+  - LSGAN
 
 # Applied Project
 <details>
