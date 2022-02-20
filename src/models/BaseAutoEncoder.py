@@ -1,4 +1,4 @@
-from typing import List
+from typing import Any, List
 
 import torch
 import torch.nn as nn
@@ -37,7 +37,7 @@ class BaseEncoder(nn.Module):
         ), "should be: n_layers + 1 == len(features_list)"
         activation_func = getattr(nn, activation_func_name, nn.ReLU)
 
-        layers = []
+        layers: List[Any] = []
         # order of layers (reference):
         # https://gaussian37.github.io/dl-concept-order_of_regularization_term/
         for in_features, out_features in zip(features_list[:-1], features_list[1:]):
@@ -93,7 +93,7 @@ class BaseDecoder(nn.Module):
         ), "should be: n_layers + 1 == len(features_list)"
         activation_func = getattr(nn, activation_func_name, nn.ReLU)
 
-        layers = []
+        layers: List[Any] = []
         for in_features, out_features in zip(features_list[:-1], features_list[1:]):
             # fully-connected layer
             layers.append(nn.Linear(in_features, out_features))
