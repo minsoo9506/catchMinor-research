@@ -42,7 +42,7 @@ class BaseEncoder(nn.Module):
         # https://gaussian37.github.io/dl-concept-order_of_regularization_term/
         for in_features, out_features in zip(features_list[:-1], features_list[1:]):
             # fully-connected layer
-            layers.append[nn.Linear(in_features, out_features)]
+            layers.append(nn.Linear(in_features, out_features))
             # batchnorm1d
             if use_batch_norm:
                 layers.append(nn.BatchNorm1d(out_features))
@@ -96,7 +96,7 @@ class BaseDecoder(nn.Module):
         layers = []
         for in_features, out_features in zip(features_list[:-1], features_list[1:]):
             # fully-connected layer
-            layers.append[nn.Linear(in_features, out_features)]
+            layers.append(nn.Linear(in_features, out_features))
             # batchnorm1d
             if use_batch_norm:
                 layers.append(nn.BatchNorm1d(out_features))
