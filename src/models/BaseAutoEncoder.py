@@ -74,7 +74,7 @@ class BaseDecoder(nn.Module):
         Parameters
         ----------
         n_layers : int, optional
-            num of layers, by default 3
+            num of layers , by default 3
         features_list : List[int], optional
             in_ and out_features in each layers iteratively
             features_list[0] is in_features of the first layer
@@ -123,6 +123,24 @@ class BaseAutoEncoder(nn.Module):
         dropout_p: float = 0.2,
         use_batch_norm: bool = False,
     ):
+        """AutoEncoder with fully-connected layer
+
+        Parameters
+        ----------
+        n_layers : int, optional
+            num of layers (only encoder or decoder), by default 3
+        features_list : List[int], optional
+            in_features and out_features in each layers iteratively
+            features_list[0] is in_features of the first layer
+            features_list[-1] is out_features of the last layer
+            by default [2, 4, 8, 16]
+        activation_func_name : str, optional
+            should match the name in torch.nn, by default "ReLU"
+        dropout_p : float, optional
+            if 0, no dropout layer, by default 0.2
+        use_batch_norm : bool, optional
+            _description_, by default False
+        """
         super().__init__()
 
         self.encoder = BaseEncoder(
