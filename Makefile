@@ -36,9 +36,9 @@ clean:
 
 #  Lint using
 ## flake8: PEP8 based lint
-## mypy: type check -> not use now
+## mypy: type check
 lint:
-	pytest src --flake8
+	pytest src --flake8 --mypy
 
 #  formatting
 ## black: formatting
