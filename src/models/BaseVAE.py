@@ -2,7 +2,6 @@ from typing import Any, List
 
 import torch
 import torch.nn as nn
-from torch.nn import functional as F
 
 
 class BaseVAE(nn.Module):
@@ -131,6 +130,18 @@ class BaseVAE(nn.Module):
     def forward(
         self, x: torch.Tensor
     ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        """forward
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            input data
+
+        Returns
+        -------
+        tuple[torch.Tensor, torch.Tensor, torch.Tensor]
+            reconstructed x, mu, logvar
+        """
         mu, logvar = self._encode(x)
         z = self._reparameterize(mu, logvar)
         return self._decode(z), mu, logvar
