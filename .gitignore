@@ -4,6 +4,10 @@ __pycache__/
 .mypy_cache
 *.py[cod]
 
+# wandb
+wandb
+None
+
 # C extensions
 *.so
 
