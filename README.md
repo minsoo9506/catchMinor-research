@@ -7,9 +7,6 @@
     - Imbalanced Learning
     - Anomaly Detection, Outlier Analysis
 
-[To do]: #
-[기준 만들기]: #
-
 ### Index
 ---
 - [Code Implementation](#code-implementation)
@@ -31,12 +28,9 @@
 - [Resource](#resource)
 
 # Code Implementation
-- ing
-  - BaseAutoEncoder
-- coming soon
-  - VAE
-  - GAN
-  - LSGAN
+- BaseAutoEncoder (fully-connected layers)
+- BaseVAE (fully-connected layers)
+- TAnoGAN (LSTM layers) : ing
 
 # Applied Project
 <details>
