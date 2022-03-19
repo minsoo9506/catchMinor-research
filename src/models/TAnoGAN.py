@@ -14,6 +14,7 @@ class LSTMGenerator(nn.Module):
         dropout_p: float = 0.2,
         batch_first: bool = True,
         bidirectional: bool = False,
+        seq_len: int = 60
     ):
         """TAnoGAN Generator with LSTM layers
 
@@ -35,13 +36,15 @@ class LSTMGenerator(nn.Module):
             batch_first hyperparameter in nn.LSTM, by default True
         bidirectional : bool, optional
             bidirectional hyperparameter in nn.LSTM, by default False
+        seq_len : int, optional
+            sequence length of time series data, by default 60
         """
         super().__init__()
 
         assert n_layers == len(
             hidden_size_list
         ), "should be: n_layers == len(features_list)"
-
+        self.input_size = input_size
         self.n_layers = n_layers
         self.output_size = output_size
 
@@ -67,7 +70,7 @@ class LSTMGenerator(nn.Module):
                 )    
 
         self.linear = nn.Sequential(
-            nn.Linear(in_features=hidden_size_list[-1], out_features=output_size),
+            nn.Linear(in_features=seq_len * hidden_size_list[-1], out_features=seq_len * output_size),
             nn.Tanh()
             )
 
@@ -77,8 +80,8 @@ class LSTMGenerator(nn.Module):
             recurrent_features, _ = self.lstm[i](recurrent_features)
         # |recurrent_features| = (batch_size, seq_len, hidden_size * bidirectional)
         batch_size, seq_len, h = recurrent_features.size(0), recurrent_features.size(1), recurrent_features.size(3)
-        outputs = self.linear(recurrent_features.contiguous().view(batch_size * seq_len, h))
-        # |outputs| = (batch_size * seq_len, output_size)
+        outputs = self.linear(recurrent_features.contiguous().view(batch_size, seq_len * h))
+        # |outputs| = (batch_size, seq_len * output_size)
         outputs = outputs.view(batch_size, seq_len, -1)  # : want to be same with the original data
         return outputs, recurrent_features
 
@@ -94,6 +97,7 @@ class LSTMDiscriminator(nn.Module):
         dropout_p: float = 0.2,
         batch_first: bool = True,
         bidirectional: bool = False,
+        seq_len: int = 60
     ):
         """TAnoGAN Discriminator with LSTM layers
 
@@ -115,6 +119,8 @@ class LSTMDiscriminator(nn.Module):
             batch_first hyperparameter in nn.LSTM, by default True
         bidirectional : bool, optional
             bidirectional hyperparameter in nn.LSTM, by default False
+        seq_len : int, optional
+            sequence length of time series data, by default 60
         """
         super().__init__()
 
@@ -149,7 +155,7 @@ class LSTMDiscriminator(nn.Module):
                 )    
 
         self.linear = nn.Sequential(
-            nn.Linear(in_features=hidden_size_list[-1], out_features=output_size),
+            nn.Linear(in_features=seq_len * hidden_size_list[-1], out_features=output_size),
             nn.Sigmoid()
         )
 
@@ -159,7 +165,6 @@ class LSTMDiscriminator(nn.Module):
             recurrent_features, _ = self.lstm[i](recurrent_features)
         # |recurrent_features| = (batch_size, seq_len, hidden_size * bidirectional)
         batch_size, seq_len, h = recurrent_features.size(0), recurrent_features.size(1), recurrent_features.size(3)
-        outputs = self.linear(recurrent_features.contiguous().view(batch_size * seq_len, h))
-        # |outputs| = (batch_size * seq_len, output_size=1)
-        outputs = outputs.view(batch_size, seq_len, -1)
+        outputs = self.linear(recurrent_features.contiguous().view(batch_size, seq_len * h))
+        # |outputs| = (batch_size, output_size=1)
         return outputs, recurrent_features
