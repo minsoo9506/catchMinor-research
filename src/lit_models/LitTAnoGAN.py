@@ -39,25 +39,41 @@ class LitTAnoGAN(pl.LightningModule):
         x, _ = batch
         # |x| = (batch_size, seq_len, input_size)
 
+        # generate latent-z
+        z = torch.randn(x.size(0), self.seq_len, self.g.input_size)
+        z = z.type_as(x)
+
         # train generator
         # maximize log(D(G(z)))
         if optimizer_idx == 0: 
-            z = torch.randn(x.shape[0], self.seq_len, self.g.input_size)
-            z = z.type_as(x)
+
             generated_data, _ = self.g(z)
             # |generated_data| = |x|
 
             fake, _ = self.d(generated_data)
             # |fake| = (batch_size, 1)
-            fake_label = torch.ones(fake.size(0), fake.size(1))
+            fake_label = torch.ones(fake.size(0), 1)
+            fake_label = fake_label.type_as(x)
             loss_g = self.loss_function(fake, fake_label)
             self.log("train_loss_g", loss_g, on_epoch=True)
             return loss_g        
 
-        #### 여기부터 시작 #####
         # train discriminator
         # maximize log(D(x)) + log(1 - D(G(z)))
         if optimizer_idx == 1:
+            # real data loss
+            real_label = torch.zeros(x.size(0), 1)
+            real_label = real_label.type_as(x)
+            real, _ = self.d(x)
+            loss_d_real = self.loss_function(real, real_label)
+            # fake data loss
+            generated_data, _ = self.g(z)
+            fake, _ = self.d(generated_data)
+            fake_label = torch.ones(fake.size(0), 1)
+            fake_label = fake_label.type_as(x)
+            loss_d_fake = self.loss_function(fake, fake_label)
+            # average
+            loss_d = (loss_d_real + loss_d_fake) / 2
             return loss_d
 
     def validation_step(self, batch, batch_idx):
