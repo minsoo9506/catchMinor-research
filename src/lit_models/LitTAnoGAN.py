@@ -4,23 +4,36 @@ import pytorch_lightning as pl
 import torch
 import torch.optim
 
-from src.models.TAnoGAN import LSTMGenerator, LSTMDiscriminator
+from src.models.TAnoGAN import LSTMDiscriminator, LSTMGenerator
+
 
 class LitTAnoGAN(pl.LightningModule):
     def __init__(
         self,
-        # n_layers: int = 3,
-        # features_list: List[int] = [16, 8, 4, 2],
-        # activation_func_name: str = "ReLU",
-        # dropout_p: float = 0.2,
-        # use_batch_norm: bool = False,
-        # optimizer: str = "Adam",
-        # loss_function: str = "BCELoss",
-        seq_len: int = 8
+        G: LSTMGenerator = LSTMGenerator(),
+        D: LSTMDiscriminator = LSTMDiscriminator(),
+        optimizer: str = "Adam",
+        loss_function: str = "BCELoss",
+        seq_len: int = 8,
     ):
+        """TAnoGAn litmodel
+
+        Parameters
+        ----------
+        G : LSTMGenerator, optional
+            _description_, by default LSTMGenerator()
+        D : LSTMDiscriminator, optional
+            _description_, by default LSTMDiscriminator()
+        optimizer : str, optional
+            _description_, by default "Adam"
+        loss_function : str, optional
+            _description_, by default "BCELoss"
+        seq_len : int, optional
+            _description_, by default 8
+        """
         super().__init__()
-        self.g = LSTMGenerator()
-        self.d = LSTMDiscriminator()
+        self.g = G
+        self.d = D
         self.seq_len = seq_len
         self.optimizerG = getattr(torch.optim, optimizer, torch.optim.Adam)
         self.optimizerD = getattr(torch.optim, optimizer, torch.optim.Adam)
