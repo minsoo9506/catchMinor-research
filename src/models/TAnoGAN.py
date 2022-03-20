@@ -3,6 +3,7 @@ from typing import Any, Dict, List
 import torch
 import torch.nn as nn
 
+
 class LSTMGenerator(nn.Module):
     def __init__(
         self,
@@ -14,7 +15,7 @@ class LSTMGenerator(nn.Module):
         dropout_p: float = 0.2,
         batch_first: bool = True,
         bidirectional: bool = False,
-        seq_len: int = 60
+        seq_len: int = 60,
     ):
         """TAnoGAN Generator with LSTM layers
 
@@ -57,7 +58,7 @@ class LSTMGenerator(nn.Module):
                     num_layers=num_layers,
                     batch_first=batch_first,
                     dropout=dropout_p,
-                    bidirectional=bidirectional
+                    bidirectional=bidirectional,
                 )
             else:
                 self.lstm[i] = nn.LSTM(
@@ -66,23 +67,34 @@ class LSTMGenerator(nn.Module):
                     num_layers=num_layers,
                     batch_first=batch_first,
                     dropout=dropout_p,
-                    bidirectional=bidirectional
-                )    
+                    bidirectional=bidirectional,
+                )
 
         self.linear = nn.Sequential(
-            nn.Linear(in_features=seq_len * hidden_size_list[-1], out_features=seq_len * output_size),
-            nn.Tanh()
-            )
+            nn.Linear(
+                in_features=seq_len * hidden_size_list[-1],
+                out_features=seq_len * output_size,
+            ),
+            nn.Tanh(),
+        )
 
     def forward(self, input):
         recurrent_features, _ = self.lstm[0](input)
         for i in range(1, self.n_layers):
             recurrent_features, _ = self.lstm[i](recurrent_features)
         # |recurrent_features| = (batch_size, seq_len, hidden_size * bidirectional)
-        batch_size, seq_len, h = recurrent_features.size(0), recurrent_features.size(1), recurrent_features.size(3)
-        outputs = self.linear(recurrent_features.contiguous().view(batch_size, seq_len * h))
+        batch_size, seq_len, h = (
+            recurrent_features.size(0),
+            recurrent_features.size(1),
+            recurrent_features.size(3),
+        )
+        outputs = self.linear(
+            recurrent_features.contiguous().view(batch_size, seq_len * h)
+        )
         # |outputs| = (batch_size, seq_len * output_size)
-        outputs = outputs.view(batch_size, seq_len, -1)  # : want to be same with the original data
+        outputs = outputs.view(
+            batch_size, seq_len, -1
+        )  # : want to be same with the original data
         return outputs, recurrent_features
 
 
@@ -97,7 +109,7 @@ class LSTMDiscriminator(nn.Module):
         dropout_p: float = 0.2,
         batch_first: bool = True,
         bidirectional: bool = False,
-        seq_len: int = 60
+        seq_len: int = 60,
     ):
         """TAnoGAN Discriminator with LSTM layers
 
@@ -142,7 +154,7 @@ class LSTMDiscriminator(nn.Module):
                     num_layers=num_layers,
                     batch_first=batch_first,
                     dropout=dropout_p,
-                    bidirectional=bidirectional
+                    bidirectional=bidirectional,
                 )
             else:
                 self.lstm[i] = nn.LSTM(
@@ -151,12 +163,14 @@ class LSTMDiscriminator(nn.Module):
                     num_layers=num_layers,
                     batch_first=batch_first,
                     dropout=dropout_p,
-                    bidirectional=bidirectional
-                )    
+                    bidirectional=bidirectional,
+                )
 
         self.linear = nn.Sequential(
-            nn.Linear(in_features=seq_len * hidden_size_list[-1], out_features=output_size),
-            nn.Sigmoid()
+            nn.Linear(
+                in_features=seq_len * hidden_size_list[-1], out_features=output_size
+            ),
+            nn.Sigmoid(),
         )
 
     def forward(self, input):
@@ -164,7 +178,13 @@ class LSTMDiscriminator(nn.Module):
         for i in range(1, self.n_layers):
             recurrent_features, _ = self.lstm[i](recurrent_features)
         # |recurrent_features| = (batch_size, seq_len, hidden_size * bidirectional)
-        batch_size, seq_len, h = recurrent_features.size(0), recurrent_features.size(1), recurrent_features.size(3)
-        outputs = self.linear(recurrent_features.contiguous().view(batch_size, seq_len * h))
+        batch_size, seq_len, h = (
+            recurrent_features.size(0),
+            recurrent_features.size(1),
+            recurrent_features.size(3),
+        )
+        outputs = self.linear(
+            recurrent_features.contiguous().view(batch_size, seq_len * h)
+        )
         # |outputs| = (batch_size, output_size=1)
         return outputs, recurrent_features
