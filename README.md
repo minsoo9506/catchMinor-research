@@ -6,6 +6,7 @@
 - Research and Code Implementation (personal project)
     - Imbalanced Learning
     - Anomaly Detection, Outlier Analysis
+    - (data) tabular, time series, text
 
 ### Index
 ---
@@ -28,9 +29,11 @@
 - [Resource](#resource)
 
 # Code Implementation
-- BaseAutoEncoder (fully-connected layers)
-- BaseVAE (fully-connected layers)
-- TAnoGAN (LSTM layers) : ing
+|model|layer|completeness|
+|---|---|---|
+|BaseAutoEncoder|fully-connected layer|O|
+|BaseVAE|fully-connected layer|O|
+|TAnoGAN|LSTM|90%|
 
 # Applied Project
 <details>
