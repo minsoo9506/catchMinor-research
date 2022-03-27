@@ -116,7 +116,16 @@ class LitTAnoGAN(pl.LightningModule):
         self.log("val_loss", val_loss, on_epoch=True)
 
     def test_step(self, batch, batch_idx):
-        x, _ = batch
-        output_x = self(x)
-        loss = self.loss_function(output_x, x)
-        self.log("test_loss", loss, on_epoch=True)
+        test_loss = self.validation_step(batch, batch_idx)
+        self.log("test_loss", test_loss, on_epoch=True)
+
+    def _anomaly_score(self, x, generated_x, Lambda=0.1):
+        # Residual Loss
+        residual_loss = torch.sum(torch.abs(x - generated_x))
+        # Discrimination Loss
+        _, x_feature = self.D(x)
+        _, generated_x_feature = self.D(generated_x)
+        discrimination_loss = torch.sum(torch.abs(x_feature - generated_x_feature))
+
+        total_loss = (1 - Lambda) * residual_loss + Lambda * discrimination_loss
+        return residual_loss, discrimination_loss, total_loss
