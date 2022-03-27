@@ -52,7 +52,7 @@ class LitTAnoGAN(pl.LightningModule):
         x, _ = batch
         # |x| = (batch_size, seq_len, input_size)
 
-        # generate latent-z
+        # generate latent_z
         z = torch.randn(x.size(0), self.seq_len, self.g.input_size)
         z = z.type_as(x)
 
@@ -87,13 +87,33 @@ class LitTAnoGAN(pl.LightningModule):
             loss_d_fake = self.loss_function(fake, fake_label)
             # average
             loss_d = (loss_d_real + loss_d_fake) / 2
+            self.log("train_loss_d", loss_d, on_epoch=True)
             return loss_d
 
     def validation_step(self, batch, batch_idx):
         x, _ = batch
-        output_x = self(x)
-        loss = self.loss_function(output_x, x)
-        self.log("val_loss", loss, on_epoch=True)
+        # generator loss
+        z = torch.randn(x.size(0), self.seq_len, self.g.input_size)
+        z = z.type_as(x)
+        generated_data, _ = self.g(z)
+        fake, _ = self.d(generated_data)
+        fake_label = torch.ones(fake.size(0), 1)
+        fake_label = fake_label.type_as(x)
+        loss_g = self.loss_function(fake, fake_label)
+        # discriminator loss
+        real_label = torch.zeros(x.size(0), 1)
+        real_label = real_label.type_as(x)
+        real, _ = self.d(x)
+        loss_d_real = self.loss_function(real, real_label)
+        generated_data, _ = self.g(z)
+        fake, _ = self.d(generated_data)
+        fake_label = torch.ones(fake.size(0), 1)
+        fake_label = fake_label.type_as(x)
+        loss_d_fake = self.loss_function(fake, fake_label)
+        loss_d = (loss_d_real + loss_d_fake) / 2.0
+        # val_loss = (generator loss + discriminator loss) / 2.0
+        val_loss = (loss_g + loss_d) / 2.0
+        self.log("val_loss", val_loss, on_epoch=True)
 
     def test_step(self, batch, batch_idx):
         x, _ = batch
