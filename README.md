@@ -33,6 +33,7 @@
 |---|---|---|
 |BaseAutoEncoder|fully-connected layer|O|
 |BaseVAE|fully-connected layer|O|
+|BaseGAN|fully-connected layer|O|
 |TAnoGAN|LSTM|90%|
 
 # Applied Project
