@@ -1,8 +1,10 @@
 from typing import List
 
+import numpy as np
 import pytorch_lightning as pl
 import torch
 import torch.optim
+from torch.utils.data import dataloader
 
 from src.models.TAnoGAN import LSTMDiscriminator, LSTMGenerator
 
@@ -58,7 +60,7 @@ class LitTAnoGAN(pl.LightningModule):
 
         # train generator
         # maximize log(D(G(z)))
-        if optimizer_idx == 0: 
+        if optimizer_idx == 0:
 
             generated_data, _ = self.g(z)
             # |generated_data| = |x|
@@ -69,7 +71,7 @@ class LitTAnoGAN(pl.LightningModule):
             fake_label = fake_label.type_as(x)
             loss_g = self.loss_function(fake, fake_label)
             self.log("train_loss_g", loss_g, on_epoch=True)
-            return loss_g        
+            return loss_g
 
         # train discriminator
         # maximize log(D(x)) + log(1 - D(G(z)))
@@ -119,7 +121,25 @@ class LitTAnoGAN(pl.LightningModule):
         test_loss = self.validation_step(batch, batch_idx)
         self.log("test_loss", test_loss, on_epoch=True)
 
-    def _anomaly_score(self, x, generated_x, Lambda=0.1):
+    def _anomaly_score(
+        self, x: torch.Tensor, generated_x: torch.Tensor, Lambda=0.1
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        """get anomaly score
+
+        Parameters
+        ----------
+        x : torch.Tensor
+            original data
+        generated_x : torch.Tensor
+            generated data
+        Lambda : float, optional
+            _description_, by default 0.1
+
+        Returns
+        -------
+        tuple[torch.Tensor, torch.Tensor, torch.Tensor]
+            residual_loss, discrimination_loss, total_loss
+        """
         # Residual Loss
         residual_loss = torch.sum(torch.abs(x - generated_x))
         # Discrimination Loss
@@ -129,3 +149,51 @@ class LitTAnoGAN(pl.LightningModule):
 
         total_loss = (1 - Lambda) * residual_loss + Lambda * discrimination_loss
         return residual_loss, discrimination_loss, total_loss
+
+    def inference(
+        self, len_test: int, test_dataloader: dataloader, z_epochs: int
+    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+        """inference optimizing z
+
+        Parameters
+        ----------
+        len_test : int
+            length of test data
+        test_dataloader : dataloader
+            dataloader with batch_size=1
+        z_epochs : int
+            epochs to optimize z
+
+        Returns
+        -------
+        tuple[torch.Tensor, torch.Tensor, torch.Tensor]
+            total_anomaly_score, total_residual, total_dis
+        """
+        total_anomaly_score = np.zeros(len_test)
+        total_residual = np.zeros(len_test)
+        total_dis = np.zeros(len_test)
+
+        i = 0
+        for x, _ in test_dataloader:
+            if i % self.seq_len == 0:
+                z = torch.randn(x.size(0), self.seq_len, self.g.input_size)
+                z = z.type_as(x)
+                z_optimizer = torch.optim.Adam([z], lr=1e-2)
+
+                loss = None
+                for j in range(z_epochs):
+                    gen_fake, _ = self.g(z)
+                    _, _, loss = self._anomaly_score(x, gen_fake)
+                    loss.backward()
+                    z_optimizer.step()
+
+                resid, dis, loss = self._anomaly_score(x, gen_fake)
+                resid = resid.cpu().detach().numpy()
+                dis = dis.cpu().detach().numpy()
+                loss = loss.cpu().detach().numpy()
+                total_residual[i : i + self.seq_len] += resid
+                total_dis[i : i + self.seq_len] += dis
+                total_anomaly_score[i : i + self.seq_len] += loss
+            i += 1
+
+        return total_anomaly_score, total_residual, total_dis
