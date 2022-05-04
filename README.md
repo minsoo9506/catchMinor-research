@@ -19,6 +19,7 @@
     - [Cost-sensitive](#cost-sensitive)
     - [Over, Under Sampling](#over-under-sampling)
     - [Ensemble Learning](#ensemble-learning)
+    - [Feature Selection](#feature-selection)
     - [Imbalanced Classification with Multiple Classes](#imbalanced-classification-with-multiple-classes)
   - [Anomaly Detection, Outlier Analysis](#anomaly-detection-outlier-analysis)
     - [Outlier Analysis (2017) - Charu C. Aggarwal](#outlier-analysis-2017---charu-c-aggarwal)
@@ -89,9 +90,7 @@
   - [`Paper Link`](http://www.ifp.illinois.edu/~iracohen/publications/CalibrationECML2004.pdf) | `My Summary` | `My Code`
 - The precision-recall plot is more informative than the ROC plot when evaluating binary classifiers on imbalanced datasets
   - [`Paper Link`](https://www.researchgate.net/publication/273155496_The_Precision-Recall_Plot_Is_More_Informative_than_the_ROC_Plot_When_Evaluating_Binary_Classifiers_on_Imbalanced_Datasets) | `My Summary` | `My Code`
-- The relationship between precision-recall and ROC curves
-  - [`Paper Link`](https://www.biostat.wisc.edu/~page/rocpr.pdf) | `My Summary` | `My Code`
-
+  
 </details>
 
 <details>
@@ -117,6 +116,8 @@
   - [`Paper Link`](https://www.jair.org/index.php/jair/article/view/11192) | `My Summary` | `My Code`
 - Influence of minority class instance types on SMOTE imbalanced data oversampling
   - [`Paper Link`](https://www.researchgate.net/publication/320625181_Influence_of_minority_class_instance_types_on_SMOTE_imbalanced_data_oversampling) | `My Summary` | `My Code`
+  - Calibrating Probability with Undersampling for Unbalanced Classification (2015)
+    - [`Paper Link`](https://www3.nd.edu/~dial/publications/dalpozzolo2015calibrating.pdf) | `My Summary` | `My Code`
 
 </details>
 
@@ -126,6 +127,17 @@
 ### Ensemble Learning
 - Self-paced Ensemble for Highly Imbalanced Massive Data Classification (2020)
   - [`Paper Link`](https://arxiv.org/abs/1909.03500) | `My Summary` | `My Code`
+
+</details>
+
+</details>
+
+<details>
+  <summary>Feature Selection</summary>
+
+### Feature Selection
+- Ensemble-based wrapper methods for feature selection and class imbalance learning (2010)
+  - [`Paper Link`]| `My Summary` | `My Code`
 
 </details>
 
