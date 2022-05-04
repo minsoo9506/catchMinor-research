@@ -42,7 +42,7 @@
   <summary>Dacon 신용카드 사용자 연체 예측 AI 경진대회</summary>
 
 - tabular, multiple classes classification(3 classes), imbalance, logloss
-- practice
+- simple practice
   - OVO + Oversampling
   - Predict Probability Calibration
   - MetaCost
@@ -51,7 +51,7 @@
   <summary>Kaggle Credit Card Fraud Detection</summary>
 
 - tabular, binary classification, imbalance
-- practice
+- simple practice
   - SMOTE
   - Unsupervised PCA based algorithm
 </details>
@@ -61,6 +61,14 @@
 - Anomaly Detection with Graph Embedding Ensemble
   - (small size) tabular data
   - Node2Vec, PCA, Mahalanobis, LOF, Random Forest
+</details>
+
+<details>
+  <summary>석사 졸업 논문</summary>
+
+- [Anomaly Detection with Sampling-AutoEncoder Ensemble](https://github.com/minsoo9506/my-paper)
+  - tabular data
+  - AutoEncoder, Ensemble
 </details>
 
 # Paper Read
