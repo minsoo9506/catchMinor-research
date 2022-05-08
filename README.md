@@ -59,16 +59,16 @@
   <summary>네트워크임베딩 대학원수업 기말 프로젝트</summary>
 
 - Anomaly Detection with Graph Embedding Ensemble
-  - (small size) tabular data
+  - tabular data
   - Node2Vec, PCA, Mahalanobis, LOF, Random Forest
 </details>
 
 <details>
   <summary>석사 졸업 논문</summary>
 
-- [Anomaly Detection with Sampling-AutoEncoder Ensemble](https://github.com/minsoo9506/my-paper)
+- [Anomaly Detection with Adaptive-AutoEncoder Ensemble](https://github.com/minsoo9506/my-paper)
   - tabular data
-  - AutoEncoder, Ensemble
+  - AutoEncoder, Ensemble, Anomaly Detection
 </details>
 
 # Paper Read
@@ -124,8 +124,8 @@
   - [`Paper Link`](https://www.jair.org/index.php/jair/article/view/11192) | `My Summary` | `My Code`
 - Influence of minority class instance types on SMOTE imbalanced data oversampling
   - [`Paper Link`](https://www.researchgate.net/publication/320625181_Influence_of_minority_class_instance_types_on_SMOTE_imbalanced_data_oversampling) | `My Summary` | `My Code`
-  - Calibrating Probability with Undersampling for Unbalanced Classification (2015)
-    - [`Paper Link`](https://www3.nd.edu/~dial/publications/dalpozzolo2015calibrating.pdf) | `My Summary` | `My Code`
+- Calibrating Probability with Undersampling for Unbalanced Classification (2015)
+  - [`Paper Link`](https://www3.nd.edu/~dial/publications/dalpozzolo2015calibrating.pdf) | `My Summary` | `My Code`
 
 </details>
 
@@ -145,7 +145,9 @@
 
 ### Feature Selection
 - Ensemble-based wrapper methods for feature selection and class imbalance learning (2010)
-  - [`Paper Link`]| `My Summary` | `My Code`
+  - [`Paper Link`](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.706.4216&rep=rep1&type=pdf)| `My Summary` | `My Code`
+- A comparative study of iterative and non-iterative feature selection techniques for software defect prediction
+  - `Paper Link`| `My Summary` | `My Code`
 
 </details>
 
