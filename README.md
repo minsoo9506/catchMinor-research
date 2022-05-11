@@ -111,6 +111,8 @@
   - [`Paper Link`](https://homes.cs.washington.edu/~pedrod/papers/kdd99.pdf) | `My Summary` | `My Code`
 - The influence of class imbalance on cost-sensitive learning (IEEE 2006)
   - [`Paper Link`](https://ieeexplore.ieee.org/document/4053137) | `My Summary` | `My Code`
+- Learning and Making Decisions When Costs and Probabilities are Both Unknown (2001)
+  - [`Paper Link`](https://cseweb.ucsd.edu/~elkan/kddbianca.pdf) | `My Summary` | `My Code`
 
 </details>
 
@@ -126,6 +128,8 @@
   - [`Paper Link`](https://www.researchgate.net/publication/320625181_Influence_of_minority_class_instance_types_on_SMOTE_imbalanced_data_oversampling) | `My Summary` | `My Code`
 - Calibrating Probability with Undersampling for Unbalanced Classification (2015)
   - [`Paper Link`](https://www3.nd.edu/~dial/publications/dalpozzolo2015calibrating.pdf) | `My Summary` | `My Code`
+- A Study of the Behavior of Several Methods for Balancing Machine Learning Training Data
+  - [`Paper Link`](https://www.researchgate.net/publication/220520041_A_Study_of_the_Behavior_of_Several_Methods_for_Balancing_machine_Learning_Training_Data) | `My Summary` | `My Code`
 
 </details>
 
