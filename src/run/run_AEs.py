@@ -6,8 +6,8 @@ import pytorch_lightning as pl
 import torch
 from torch.utils.data import DataLoader
 
-from src.dataload.tabularData import (split_tabular_normal_only_train,
-                                      tabularDataset)
+from src.dataload.tabularDataset import (split_tabular_normal_only_train,
+                                         tabularDataset)
 from src.lit_models.LitBaseAutoEncoder import LitBaseAutoEncoder
 from src.lit_models.LitBaseVAE import LitBaseVAE
 

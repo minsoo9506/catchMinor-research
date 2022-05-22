@@ -66,6 +66,7 @@ class BaseGenerator(nn.Module):
         generated_x = self.model(z)
         return generated_x
 
+
 class BaseDiscriminator(nn.Module):
     def __init__(
         self,
@@ -83,7 +84,7 @@ class BaseDiscriminator(nn.Module):
             _description_, by default 3
         features_list : List[int], optional
             feature_list[0] should be original data dim,
-            feature_list[-1] should be 1,        
+            feature_list[-1] should be 1,
             by default [16, 8, 4, 1]
         activation_func_name : str, optional
             _description_, by default "ReLU"
