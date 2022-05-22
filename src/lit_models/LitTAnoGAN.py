@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Tuple
 
 import numpy as np
 import pytorch_lightning as pl
@@ -123,7 +123,7 @@ class LitTAnoGAN(pl.LightningModule):
 
     def _anomaly_score(
         self, x: torch.Tensor, generated_x: torch.Tensor, Lambda=0.1
-    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         """get anomaly score
 
         Parameters
@@ -152,7 +152,7 @@ class LitTAnoGAN(pl.LightningModule):
 
     def inference(
         self, len_test: int, test_dataloader: dataloader, z_epochs: int
-    ) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         """inference optimizing z
 
         Parameters
@@ -166,7 +166,7 @@ class LitTAnoGAN(pl.LightningModule):
 
         Returns
         -------
-        tuple[torch.Tensor, torch.Tensor, torch.Tensor]
+        Tuple[torch.Tensor, torch.Tensor, torch.Tensor]
             total_anomaly_score, total_residual, total_dis
         """
         total_anomaly_score = np.zeros(len_test)
