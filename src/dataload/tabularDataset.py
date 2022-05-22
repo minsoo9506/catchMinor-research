@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import numpy as np
 import pandas as pd
 import torch
@@ -11,7 +13,7 @@ def split_tabular_normal_only_train(
     train_ratio: float = 0.7,
     val_ratio: float = 0.7,
     shuffle: bool = False,
-) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """make dataset: train(normal), valid(normal), test(normal, abnormal)
 
     Parameters
@@ -29,7 +31,7 @@ def split_tabular_normal_only_train(
 
     Returns
     -------
-    tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]
+    Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]
         normal_train, normal_val, normal_abnormal_test
     """
     normal = df.loc[df[y_label] == 0, :].reset_index(drop=True)
@@ -66,5 +68,5 @@ class tabularDataset(Dataset):
     def __len__(self) -> int:
         return self.x.shape[0]
 
-    def __getitem__(self, idx: int) -> tuple[torch.Tensor, torch.Tensor]:
+    def __getitem__(self, idx: int) -> Tuple[torch.Tensor, torch.Tensor]:
         return self.x[idx, :], self.y[idx]
