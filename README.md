@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![test src/test](https://github.com/minsoo9506/catchMinor/actions/workflows/test.yaml/badge.svg)](https://github.com/minsoo9506/catchMinor/actions/workflows/test.yaml)
 
-- Research and Code Implementation (personal project)
+- Research and pytorch Code Implementation
     - Imbalanced Learning
     - Anomaly Detection, Outlier Analysis
     - (data) tabular, time series, text
@@ -36,12 +36,13 @@
 |BaseVAE|fully-connected layer|O|
 |BaseGAN|fully-connected layer|O|
 |TAnoGAN|LSTM|90%|
+|U-Net for TS|CNN|ing|
 
 # Applied Project
 <details>
   <summary>Dacon 신용카드 사용자 연체 예측 AI 경진대회</summary>
 
-- tabular, multiple classes classification(3 classes), imbalance, logloss
+- tabular, multiple classes classification(3 classes), imbalance
 - simple practice
   - OVO + Oversampling
   - Predict Probability Calibration
@@ -58,8 +59,8 @@
 <details>
   <summary>네트워크임베딩 대학원수업 기말 프로젝트</summary>
 
-- Anomaly Detection with Graph Embedding Ensemble
-  - tabular data
+- [Anomaly Detection with Graph Embedding Ensemble](/applied-project/Anomaly_Detection_with_Graph_Embedding_Ensemble.pdf)
+  - tabular data, graph embedding, anomaly detection
   - Node2Vec, PCA, Mahalanobis, LOF, Random Forest
 </details>
 
@@ -68,7 +69,7 @@
 
 - [Anomaly Detection with Adaptive-AutoEncoder Ensemble](https://github.com/minsoo9506/my-paper)
   - tabular data
-  - AutoEncoder, Ensemble, Anomaly Detection
+  - AutoEncoder, ensemble, anomaly detection
 </details>
 
 # Paper Read
@@ -275,6 +276,8 @@
   - [`Paper Link`](https://journals.sagepub.com/doi/pdf/10.1155/2016/9653230) | `My Summary` | `My Code`
 - Time-Series Anomaly Detection Service at Microsoft (2019)
   - [`Paper Link`](https://arxiv.org/abs/1906.03821) | `My Summary` | `My Code`
+- Time Series Anomaly Detection Using Convolutional Neural Networks and Transfer Learning (2019)
+  - [`Paper Link`](https://arxiv.org/pdf/1905.13628.pdf) | `My Summary` | [`My Code`](src/models/CNNBasedTS.py)
 
 </details>
 
