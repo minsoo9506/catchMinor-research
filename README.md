@@ -30,13 +30,13 @@
 - [Resource](#resource)
 
 # Code Implementation
-|model|layer|completeness|
-|---|---|---|
-|BaseAutoEncoder|fully-connected layer|O|
-|BaseVAE|fully-connected layer|O|
-|BaseGAN|fully-connected layer|O|
-|TAnoGAN|LSTM|90%|
-|U-Net for TS|CNN|ing|
+|model|layer|
+|---|---|
+|[BaseAutoEncoder](/src/models/BaseAutoEncoder.py)|fully-connected layer|
+|[BaseVAE](/src/models/BaseVAE.py)|fully-connected layer|
+|[BaseGAN](/src/models/BaseGAN.py)|fully-connected layer|
+|[TAnoGAN](/src/models/TAnoGAN.py)|LSTM|
+|[U-Net for TS anomaly](/src/models/CNNBasedTS.py)|CNN|
 
 # Applied Project
 <details>
