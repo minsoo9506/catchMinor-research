@@ -261,4 +261,9 @@
 
 # Other References
 
-- Machine Learning for Fraud Detection in Streaming Services (Netflix blog)
+### Article
+
+- [Machine Learning for Fraud Detection in Streaming Services (Netflix blog medium article)](https://netflixtechblog.medium.com/machine-learning-for-fraud-detection-in-streaming-services-b0b4ef3be3f6)
+- [Fraud Detection on Blockchain based on Machine learning (medium article)](https://jysden.medium.com/fraud-detection-on-ethereum-with-graph-neural-network-f434e5b9aef5)
+
+### Use Case
