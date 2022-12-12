@@ -37,28 +37,17 @@
 # Applied Project
 
 - Dacon 신용카드 사용자 연체 예측 AI 경진대회 [`code`](./applied-project/Dacon%20%EC%8B%A0%EC%9A%A9%EC%B9%B4%EB%93%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%97%B0%EC%B2%B4%20%EC%98%88%EC%B8%A1/)
-
-  - tabular, multiple classes classification(3 classes), imbalance
-  - simple practice
-    - OVO + Oversampling
-    - Predict Probability Calibration
-    - MetaCost
-
+  - task: tabular, multiple classes classification(3 classes), imbalance
+  - method: OVO + Oversampling, Probability Calibration, MetaCost
 - Kaggle Credit Card Fraud Detection [`code`](./applied-project/Kaggle%20Credit%20Card%20Fraud%20Detection/)
-
-  - tabular, binary classification, imbalance
-  - simple practice
-    - SMOTE
-    - Unsupervised PCA based algorithm
-
+  - task: tabular, binary classification, imbalance
+  - method: SMOTE, Unsupervised PCA based algorithm
 - 네트워크임베딩 대학원수업 기말 프로젝트 (Anomaly Detection with Graph Embedding Ensemble ) [`pdf`](/applied-project/Anomaly_Detection_with_Graph_Embedding_Ensemble.pdf)
-
-  - tabular data, graph embedding, anomaly detection
-  - Node2Vec, PCA, Mahalanobis, LOF, Random Forest
-
+  - task: tabular data, graph embedding, anomaly detection
+  - method: Node2Vec, PCA, Mahalanobis, LOF, Random Forest
 - 석사 졸업 논문 (Anomaly Detection with Adaptive-AutoEncoder Ensemble) [`repository`](https://github.com/minsoo9506/my-paper)
-  - tabular data
-  - AutoEncoder, ensemble, anomaly detection
+  - task: tabular data, ensemble, anomaly detection
+  - method: AutoEncoder
 
 # Paper Read
 
