@@ -1,13 +1,7 @@
-# catchMinor
+# catchMinor-research
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![test src/test](https://github.com/minsoo9506/catchMinor/actions/workflows/test.yaml/badge.svg)](https://github.com/minsoo9506/catchMinor/actions/workflows/test.yaml)
-
-- Research and Model Implementation
-  - Imbalanced Learning
-  - Anomaly Detection, Outlier Analysis
-  - (data) tabular, time series, graph
-  - (framework) pytorch
+- Imbalanced Learning & Anomaly Detection, Outlier Analysis
+- data: tabular, time series, graph
 
 # Index
 
@@ -30,7 +24,7 @@
     - [Time Series and Streaming Anomaly Detection](#time-series-and-streaming-anomaly-detection)
 - [Other References](#other-references)
 
-# Code
+# Code (will be deleted)
 
 |        model         |         layer         | code                                                                                                                      | example |
 | :------------------: | :-------------------: | ------------------------------------------------------------------------------------------------------------------------- | ------- |
