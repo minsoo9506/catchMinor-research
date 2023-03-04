@@ -4,44 +4,39 @@
 - data: tabular, time series, graph
 
 # Index
-
-- [Code](#code)
-- [Applied Project](#applied-project)
+<!-- TOC -->
+- [Practice](#practice)
+- [Project](#project)
 - [Paper Read](#paper-read)
-  - [Imbalanced Learning](#imbalanced-learning)
-    - [Survey](#survey)
-    - [Perfomance Measure](#perfomance-measure)
-    - [Cost-sensitive](#cost-sensitive)
-    - [Over, Under Sampling](#over-under-sampling)
-    - [Ensemble Learning](#ensemble-learning)
-    - [Feature Selection](#feature-selection)
-    - [Imbalanced Classification with Multiple Classes](#imbalanced-classification-with-multiple-classes)
-  - [Anomaly Detection, Outlier Analysis](#anomaly-detection-outlier-analysis)
-    - [Outlier Analysis (2017) - Charu C. Aggarwal](#outlier-analysis-2017---charu-c-aggarwal)
-    - [Categorization of Deep Anomaly Detection](#categorization-of-deep-anomaly-detection)
-    - [Survey](#survey-1)
-    - [Learning feature representations of normality](#learning-feature-representations-of-normality)
-    - [Time Series and Streaming Anomaly Detection](#time-series-and-streaming-anomaly-detection)
+    - [Imbalanced Learning](#imbalanced-learning)
+        - [Survey](#survey)
+        - [Perfomance Measure](#perfomance-measure)
+        - [Cost-sensitive](#cost-sensitive)
+        - [Sampling](#sampling)
+        - [Ensemble Learning](#ensemble-learning)
+        - [Feature Selection](#feature-selection)
+        - [Imbalanced Classification with Multiple Classes](#imbalanced-classification-with-multiple-classes)
+    - [Anomaly Detection, Outlier Analysis](#anomaly-detection-outlier-analysis)
+        - [Outlier Analysis 2017 - Charu C. Aggarwal](#outlier-analysis-2017---charu-c-aggarwal)
+        - [Categorization of Deep Anomaly Detection](#categorization-of-deep-anomaly-detection)
+        - [Survey](#survey)
+        - [Learning feature representations of normality](#learning-feature-representations-of-normality)
+        - [Time Series and Streaming Anomaly Detection](#time-series-and-streaming-anomaly-detection)
 - [Other References](#other-references)
+    - [Article](#article)
+    - [Use Case](#use-case)
+    - [Open Source](#open-source)
 
-# Code (will be deleted)
 
-|        model         |         layer         | code                                                                                                                      | example |
-| :------------------: | :-------------------: | ------------------------------------------------------------------------------------------------------------------------- | ------- |
-|   BaseAutoEncoder    | fully-connected layer | [`model`](/src/models/BaseAutoEncoder.py), [`lit`](./src/lit_models/LitBaseAutoEncoder.py), [`run`](./src/run/run_AEs.py) |         |
-|       BaseVAE        | fully-connected layer | [`model`](/src/models/BaseVAE.py), [`lit`](./src/lit_models/LitBaseVAE.py), [`run`](./src/run/run_AEs.py)                 |         |
-|       BaseGAN        | fully-connected layer | [`model`](/src/models/BaseGAN.py), [`lit`](./src/lit_models/LitBaseGAN.py)                                                |         |
-|       TAnoGAN        |         LSTM          | [`model`](/src/models/TAnoGAN.py), [`lit`](./src/lit_models/LitTAnoGAN.py)                                                |         |
-| U-Net for TS anomaly |          CNN          | [`model`](/src/models/CNNBasedTS.py)                                                                                      |         |
-
-# Applied Project
-
+# Practice
 - Dacon 신용카드 사용자 연체 예측 AI 경진대회 [`code`](./applied-project/Dacon%20%EC%8B%A0%EC%9A%A9%EC%B9%B4%EB%93%9C%20%EC%82%AC%EC%9A%A9%EC%9E%90%20%EC%97%B0%EC%B2%B4%20%EC%98%88%EC%B8%A1/)
   - task: tabular, multiple classes classification(3 classes), imbalance
   - method: OVO + Oversampling, Probability Calibration, MetaCost
 - Kaggle Credit Card Fraud Detection [`code`](./applied-project/Kaggle%20Credit%20Card%20Fraud%20Detection/)
   - task: tabular, binary classification, imbalance
   - method: SMOTE, Unsupervised PCA based algorithm
+
+# Project
 - 네트워크임베딩 대학원수업 기말 프로젝트 (Anomaly Detection with Graph Embedding Ensemble ) [`pdf`](/applied-project/Anomaly_Detection_with_Graph_Embedding_Ensemble.pdf)
   - task: tabular data, graph embedding, anomaly detection
   - method: Node2Vec, PCA, Mahalanobis, LOF, Random Forest
@@ -52,6 +47,7 @@
 # Paper Read
 
 ## Imbalanced Learning
+![img](./reports/Imbalance_summary.png)
 
 <details>
   <summary>Survey</summary>
@@ -88,15 +84,16 @@
 </details>
 
 <details>
-  <summary>Over, Under Sampling</summary>
+  <summary>Sampling</summary>
 
-### Over, Under Sampling
+### Sampling
 
 - SMOTE (2002) [`Paper Link`](https://arxiv.org/pdf/1106.1813.pdf)
 - SMOTE for learning from imbalanced data : progress and challenges (2018) [`Paper Link`](https://www.jair.org/index.php/jair/article/view/11192)
 - Influence of minority class instance types on SMOTE imbalanced data oversampling [`Paper Link`](https://www.researchgate.net/publication/320625181_Influence_of_minority_class_instance_types_on_SMOTE_imbalanced_data_oversampling)
 - Calibrating Probability with Undersampling for Unbalanced Classification (2015) [`Paper Link`](https://www3.nd.edu/~dial/publications/dalpozzolo2015calibrating.pdf)
 - A Study of the Behavior of Several Methods for Balancing Machine Learning Training Data [`Paper Link`](https://www.researchgate.net/publication/220520041_A_Study_of_the_Behavior_of_Several_Methods_for_Balancing_machine_Learning_Training_Data)
+- Dynamic Sampling in Convolutional Neural Networks for Imbalanced Data Classification [`Paper Link`](https://users.cs.fiu.edu/~chens/PDF/MIPR18_CNN.pdf) [`My Summary`]()
 
 </details>
 
@@ -134,42 +131,16 @@
 
 ## Anomaly Detection, Outlier Analysis
 
-<details>
-  <summary>Outlier Analysis (2017) - Charu C. Aggarwal</summary>
-
 ### Outlier Analysis (2017) - Charu C. Aggarwal
 
 - Chapter02 Probabilistic and Statistical Models for Outlier Detection
 - Chapter03 Linear Models for Outlier Detection
-  - Linear Regression, PCA, OCSVM
 - Chapter04 Proximity-Based Outlier Detection
-  - Distance-Based
-  - Density-Based (LOF, LOCI, Histogram, Kernel Density)
 - Chapter05 High-Dimensional Outlier Detection
-  - Axis-Parallel subsapce
-  - Generalized subspace
 - Chapter06 Outlier Ensembles
-  - Variance reduction
-  - Bias reduction
 - Chapter07 Supervised Outlier Detection
-  - Cost-Sentitive (MetaCost, Weighting Method)
-  - Adaptive Re-sampling (SMOTE)
-  - Boosting
-  - Semi-Supervision
-  - Supervised Models for Unsupervised Outlier Detection
 - Chapter08 Outlier Detection in Categorical, Text, and Mixed Attributed Data
 - Chapter09 Time Series and Streaming Outlier Detection
-  - Prediction-based Anomaly Detection
-    - Univariate aase (ARIMA)
-    - Multiple Time Series
-    - selection method
-    - PCA method
-- ...
-
-</details>
-
-<details>
-  <summary>Categorization of Deep Anomaly Detection</summary>
 
 ### Categorization of Deep Anomaly Detection
 
@@ -181,8 +152,6 @@
     - Distance-based classification, One-class classification measure, Clustering-based measure
 - End-to-end anomaly score learning
   - Ranking model, Prior-driven model, Softmax likelihood model, End-to-end one-class classification
-
-</details>
 
 <details>
   <summary>Suvey</summary>
@@ -233,10 +202,13 @@
 
 # Other References
 
-### Article
+## Article
 
 - [Machine Learning for Fraud Detection in Streaming Services (Netflix blog medium article)](https://netflixtechblog.medium.com/machine-learning-for-fraud-detection-in-streaming-services-b0b4ef3be3f6)
 - [Fraud Detection on Blockchain based on Machine learning (medium article)](https://jysden.medium.com/fraud-detection-on-ethereum-with-graph-neural-network-f434e5b9aef5)
 - [Unsupervised and semi-supervised anomaly detection with data-centric ML, google blog](https://ai.googleblog.com/2023/02/unsupervised-and-semi-supervised.html)
 
-### Use Case
+## Use Case
+
+
+## Open Source
