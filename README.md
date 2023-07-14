@@ -5,6 +5,9 @@
 
 # Index
 <!-- TOC -->
+
+- [catchMinor-research](#catchminor-research)
+- [Index](#index)
 - [Practice](#practice)
 - [Project](#project)
 - [Paper Read](#paper-read)
@@ -18,14 +21,14 @@
         - [Imbalanced Classification with Multiple Classes](#imbalanced-classification-with-multiple-classes)
     - [Anomaly Detection, Outlier Analysis](#anomaly-detection-outlier-analysis)
         - [Outlier Analysis 2017 - Charu C. Aggarwal](#outlier-analysis-2017---charu-c-aggarwal)
-        - [Categorization of Deep Anomaly Detection](#categorization-of-deep-anomaly-detection)
         - [Survey](#survey)
         - [Learning feature representations of normality](#learning-feature-representations-of-normality)
         - [Time Series and Streaming Anomaly Detection](#time-series-and-streaming-anomaly-detection)
 - [Other References](#other-references)
     - [Article](#article)
-    - [Use Case](#use-case)
     - [Open Source](#open-source)
+
+<!-- /TOC -->
 
 
 # Practice
@@ -43,6 +46,7 @@
 - 석사 졸업 논문 (Anomaly Detection with Adaptive-AutoEncoder Ensemble) [`repository`](https://github.com/minsoo9506/my-paper)
   - task: tabular data, ensemble, anomaly detection
   - method: AutoEncoder
+- 모델 개발 [`repository`](https://github.com/minsoo9506/catchMinor)
 
 # Paper Read
 
@@ -133,26 +137,6 @@
 
 ### Outlier Analysis (2017) - Charu C. Aggarwal
 
-- Chapter02 Probabilistic and Statistical Models for Outlier Detection
-- Chapter03 Linear Models for Outlier Detection
-- Chapter04 Proximity-Based Outlier Detection
-- Chapter05 High-Dimensional Outlier Detection
-- Chapter06 Outlier Ensembles
-- Chapter07 Supervised Outlier Detection
-- Chapter08 Outlier Detection in Categorical, Text, and Mixed Attributed Data
-- Chapter09 Time Series and Streaming Outlier Detection
-
-### Categorization of Deep Anomaly Detection
-
-- Deep learning for feature extraction
-- Learning feature representations of normality
-  - Generic normality feature learning
-    - AutoEncoder, GAN, Predictability Modeling, Self-Supervised classification
-  - Anomaly measure-dependent feature learning
-    - Distance-based classification, One-class classification measure, Clustering-based measure
-- End-to-end anomaly score learning
-  - Ranking model, Prior-driven model, Softmax likelihood model, End-to-end one-class classification
-
 <details>
   <summary>Suvey</summary>
 
@@ -207,8 +191,8 @@
 - [Machine Learning for Fraud Detection in Streaming Services (Netflix blog medium article)](https://netflixtechblog.medium.com/machine-learning-for-fraud-detection-in-streaming-services-b0b4ef3be3f6)
 - [Fraud Detection on Blockchain based on Machine learning (medium article)](https://jysden.medium.com/fraud-detection-on-ethereum-with-graph-neural-network-f434e5b9aef5)
 - [Unsupervised and semi-supervised anomaly detection with data-centric ML, google blog](https://ai.googleblog.com/2023/02/unsupervised-and-semi-supervised.html)
-
-## Use Case
-
+- [Warden: Real Time Anomaly Detection at Pinterest](https://medium.com/pinterest-engineering/warden-real-time-anomaly-detection-at-pinterest-210c122f6afa)
+- [배민 앱 리뷰 품질을 향상시킨 방법은? 머신 러닝 X 네트워크 탐지 모델 도입](https://techblog.woowahan.com/11829/)
+- [Fighting Spam using Clustering and Automated Rule Creation](https://medium.com/pinterest-engineering/fighting-spam-using-clustering-and-automated-rule-creation-1c01d8c11a05)
 
 ## Open Source
