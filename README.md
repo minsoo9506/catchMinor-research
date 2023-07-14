@@ -135,7 +135,12 @@
 
 ## Anomaly Detection, Outlier Analysis
 
+<details>
+  <summary>Outlier Analysis (2017) - Charu C. Aggarwal</summary>
+
 ### Outlier Analysis (2017) - Charu C. Aggarwal
+
+</details>
 
 <details>
   <summary>Suvey</summary>
