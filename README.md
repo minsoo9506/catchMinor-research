@@ -182,6 +182,7 @@
 - Time-Series Anomaly Detection Service at Microsoft (2019) [`paper`](https://arxiv.org/abs/1906.03821)
 - Time Series Anomaly Detection Using Convolutional Neural Networks and Transfer Learning (2019) [`paper`](https://arxiv.org/pdf/1905.13628.pdf) [`code`](src/models/CNNBasedTS.py)
 - Abuse and Fraud Detection in Streaming Services Using Heuristic-Aware Machine Learning (arxiv, 2022, Netflix) [`paper`](https://arxiv.org/pdf/2203.02124.pdf)
+- Are Transformers Effective for Time Series Forecasting?, 2022 [`paper`](https://arxiv.org/pdf/2205.13504.pdf)
 
 </details>
 
